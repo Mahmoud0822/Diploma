@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hotel Booking Prediction</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="adults">Number of Adults:</label>
+                <input type="number" id="adults" name="number of adults" required>
+            </div>
+            <div class="form-group">
+                <label for="children">Number of Children:</label>
+                <input type="number" id="children" name="number of children" required>
+            </div>
+            <div class="form-group">
+                <label for="weekend_nights">Number of Weekend Nights:</label>
+                <input type="number" id="weekend_nights" name="number of weekend nights" required>
+            </div>
+            <div class="form-group">
+                <label for="week_nights">Number of Week Nights:</label>
+                <input type="number" id="week_nights" name="number of week nights" required>
+            </div>
+            <div class="form-group">
+                <label for="meal">Type of Meal:</label>
+                <select id="meal" name="type of meal" required>
+                    <option value="0">Meal Plan 1</option>
+                    <option value="1">Meal Plan 2</option>
+                    <option value="2">Not Selected</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="room_type">Room Type:</label>
+                <select id="room_type" name="room type" required>
+                    <option value="0">Room Type 1</option>
+                    <option value="1">Room Type 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lead_time">Lead Time:</label>
+                <input type="number" id="lead_time" name="lead time" required>
+            </div>
+            <div class="form-group">
+                <label for="market_segment">Market Segment Type:</label>
+                <select id="market_segment" name="market segment type" required>
+                    <option value="0">Online</option>
+                    <option value="1">Offline</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Average Price:</label>
+                <input type="number" id="price" name="average price" required>
+            </div>
+            <div class="form-group">
+                <label for="special_requests">Special Requests:</label>
+                <input type="number" id="special_requests" name="special requests" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <div class="prediction">
+            {{ prediction_text }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
